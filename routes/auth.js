@@ -44,8 +44,8 @@ router.post('/login', function(req, res, next) {
 /* POST /auth/signup route */
 router.post('/signup', function(req, res, next) {
   console.log('/auth/signup post route', req.body);
-  // Find by email
-  User.findOne({ email: req.body.email }, function(err, user) {
+  // Find by email or phone number
+  User.findOne({$or: [{email: req.body.email}, {phone: req.body.phone}] }, function(err, user) {
     if (user) {
       return res.status(400).send({error: true, message: 'Bad Request - User already exists' });
     }
@@ -54,6 +54,7 @@ router.post('/signup', function(req, res, next) {
       User.create({
         name: req.body.name,
         email: req.body.email,
+        phone: req.body.phone,
         password: req.body.password
       }, function(err, user) {
         if (err){

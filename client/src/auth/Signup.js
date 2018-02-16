@@ -8,6 +8,7 @@ class Signup extends Component {
     this.state = {
       name: '',
       email: '',
+      phone: '',
       password: ''
     }
   }
@@ -18,6 +19,9 @@ class Signup extends Component {
   handleEmailChange = (e) => {
     this.setState({email: e.target.value})
   }
+  handlePhoneChange = (e) => {
+    this.setState({phone: e.target.value})
+  }
   handlePasswordChange = (e) => {
     this.setState({password: e.target.value})
   }
@@ -27,6 +31,7 @@ class Signup extends Component {
     axios.post('/auth/signup', {
       name: this.state.name,
       email: this.state.email,
+      phone: this.state.phone,
       password: this.state.password
     }).then(result => {
       localStorage.setItem('mernToken', result.data.token);
@@ -43,29 +48,39 @@ class Signup extends Component {
       return (<Redirect to="/profile" />);
     }
     else {
-      form = (<form onSubmit={this.handleSubmit}>
-                <div>
-                  <input name="Name"
-                       placeholder="What is your first name?"
-                       value={this.state.name}
-                       onChange={this.handleNameChange}
-                  />
-                </div>
-                <div>
-                  <input name="Email"
-                       placeholder="What is your email?"
-                       value={this.state.email}
-                       onChange={this.handleEmailChange} />
-               </div>
-               <div>
-                  <input name="Password"
-                     placeholder="Choose a password"
-                     type="password"
-                     value={this.state.password}
-                     onChange={this.handlePasswordChange} />
-                 </div>
-                 <input type="submit" value="Sign up!" className="btn-primary" />
-              </form>);
+      form = (
+        <form onSubmit={this.handleSubmit}>
+          <div>
+            <input name="Name"
+                  placeholder="First Last"
+                  type="text"
+                  value={this.state.name}
+                  onChange={this.handleNameChange} />
+          </div>
+          <div>
+            <input name="Email"
+                  placeholder="email@example.com"
+                  type="email"
+                  value={this.state.email}
+                  onChange={this.handleEmailChange} />
+          </div>
+          <div>
+            <input name="Phone"
+                  placeholder="123-456-7890"
+                  type="tel"
+                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                  value={this.state.phone}
+                  onChange={this.handlePhoneChange} />
+          </div>
+          <div>
+            <input name="Password"
+                  placeholder="Choose a password"
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.handlePasswordChange} />
+            </div>
+            <input type="submit" value="Sign up!" className="btn-primary" />
+        </form>);
     }
     return (
       <div>

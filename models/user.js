@@ -25,7 +25,29 @@ var userSchema = new mongoose.Schema({
     required: true,
     minlength: 6,
     maxlength: 99
-  }
+  },
+  orders: [
+    {
+      confirmed: Boolean,
+      date: Date,
+      address: String,
+      clown: String,
+      extras: {
+        balloons: {
+          selected: Boolean,
+          price: Number
+        },
+        chocolates: {
+          selected: Boolean,
+          price: Number
+        },
+        singing: {
+          selected: Boolean,
+          price: Number
+        }
+      }
+    }
+  ]
 });
 
 // Override 'toJSON' to prevent the password from being returned with the user
@@ -35,7 +57,8 @@ userSchema.set('toJSON', {
       id: ret._id,
       name: ret.name,
       email: ret.email,
-      phone: ret.phone
+      phone: ret.phone,
+      orders: ret.orders
     };
     return returnJson;
   }

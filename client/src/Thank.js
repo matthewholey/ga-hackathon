@@ -1,30 +1,30 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 
-class Confirm extends Component {
+class Thank extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      confirmed: false
+      order_again: false
     }
   }
 
   handleSubmit = () => {
     this.setState(() => ({
-      confirmed: true
+      order_again: true
     }))
 	}
 	
 	render() {
     if(this.props.user && this.props.user.name) {
-      if (this.state.confirmed === true) {
-        return <Redirect to="/thank" />
+      if (this.state.order_again === true) {
+        return <Redirect to="/order" />
       }
 			return (
 				<div>
 					<form onSubmit={this.handleSubmit}>
 						<input type="text" />
-						<input type="submit" value="Confirm" />
+						<input type="submit" value="Clown Around Again!" />
 					</form>
 				</div>
 			);
@@ -35,4 +35,4 @@ class Confirm extends Component {
 	}
 }
 
-export default Confirm;
+export default Thank;

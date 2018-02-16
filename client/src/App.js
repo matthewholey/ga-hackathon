@@ -12,6 +12,7 @@ import Signup from './auth/Signup.js';
 import Order from './Order.js';
 import Pay from './Pay.js';
 import Confirm from './Confirm.js';
+import Thank from './Thank.js';
 
 class App extends Component {
   constructor(props){
@@ -89,6 +90,8 @@ class App extends Component {
                 () => (<Pay user={this.state.user} setFlash={this.setFlash} />)} />
               <Route path="/confirm" component={
                 () => (<Confirm user={this.state.user} setFlash={this.setFlash} />)} />
+              <Route path="/thank" component={
+                () => (<Thank user={this.state.user} setFlash={this.setFlash} />)} />
             </div>
           </div>
         </Router>

@@ -45,7 +45,7 @@ class Signup extends Component {
   render() {
     let form = '';
     if(this.props.user){
-      return (<Redirect to="/profile" />);
+      return (<Redirect to="/order" />);
     }
     else {
       form = (

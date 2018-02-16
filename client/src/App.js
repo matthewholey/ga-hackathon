@@ -3,12 +3,15 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import axios from 'axios';
 import Flash from './layout/Flash.js';
+import Nav from './layout/Nav.js';
 import Footer from './layout/Footer.js';
 import Home from './Home.js';
-import Nav from './layout/Nav.js';
 import Login from './auth/Login.js';
-import Profile from './Profile.js';
 import Signup from './auth/Signup.js';
+
+import Order from './Order.js';
+import Pay from './Pay.js';
+import Confirm from './Confirm.js';
 
 class App extends Component {
   constructor(props){
@@ -80,8 +83,12 @@ class App extends Component {
                 () => (<Login user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
               <Route path="/signup" component={
                 () => (<Signup user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
-              <Route path="/profile" component={
-                () => (<Profile user={this.state.user} setFlash={this.setFlash} />)} />
+              <Route path="/order" component={
+                () => (<Order user={this.state.user} setFlash={this.setFlash} />)} />
+              <Route path="/pay" component={
+                () => (<Pay user={this.state.user} setFlash={this.setFlash} />)} />
+              <Route path="/confirm" component={
+                () => (<Confirm user={this.state.user} setFlash={this.setFlash} />)} />
             </div>
           </div>
         </Router>

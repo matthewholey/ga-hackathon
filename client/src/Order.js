@@ -34,17 +34,17 @@ class Order extends Component {
           <h2>Scary Clown</h2>
           <label htmlFor="clown1">
             <input type="radio" id="clown1"/>
-            <img src="./media/scary.jpg" alt="Scary Clown"/>
+            <img src="/media/scary.jpg" alt="Scary Clown"/>
           </label>
           <h2>Mime</h2>
           <label htmlFor="clown2">
             <input type="radio" id="clown2"/>
-            <img src="./media/mime.jpg" alt="Mime"/>
+            <img src="/media/mime.jpg" alt="Mime"/>
           </label>
           <h2>Terry</h2>
           <label htmlFor="clown3">
             <input type="radio" id="clown3"/>
-            <img src="./media/terry.jpg" alt="Terry"/>
+            <img src="/media/terry.jpg" alt="Terry"/>
           </label>
             <input type="submit" value="Proceed to Payment" className="btn btn-primary" />
           </form>
